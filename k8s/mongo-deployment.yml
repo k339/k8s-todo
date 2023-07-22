@@ -16,6 +16,13 @@ spec:
       containers:
       - name: mongo
         image: mongo:latest
+        volumeMounts:
+        - name: mongo-persistent-storage
+          mountPath: /data/db
+      volumes:
+      - name: mongo-persistent-storage
+        hostPath:
+          path: /root/mongo-data
 ---
 apiVersion: v1
 kind: Service
